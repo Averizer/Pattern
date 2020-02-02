@@ -2,29 +2,30 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # taking two inputs at a time 
-a, b = input("Enter a two value: ").split() 
-print("Number of boys: ", a) 
-print("Number of girls: ", b) 
+#a, b = input("Enter a two value: ").split() 
+x = list(map(int, input("Enter a multiple value: ").split()))
+y = list(map(int, input("Enter a multiple value: ").split()))
+
+a = [1,2]
+b = [5,6]
+aux = []
+aux.append(x)
+aux.append(y)
+clases = []
+clases.append(aux)
+aux = []
+aux.append(a)
+aux.append(b)
+clases.append(aux)
+
+print("Number of boys: ", clases) 
 
 
-t =[1,3,2]
-y =[2,4,6]
 
-r =[3,3,2]
-q =[2,3,5]
-c=0
-c2=0
-
-x , y = input("Ingresa la caracteristica X= ").split()
-x= int(x)
-y=int(y)
-print(x)
-print(y)
 #while c < n:
-plt.plot(t,y)
-plt.plot(r,q)
+#plt.plot(t,y)
+#plt.plot(r,q)
+#   c = c+1
 
- #   c = c+1
-
-plt.show()
+#plt.show()
 
