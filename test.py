@@ -19,6 +19,7 @@ aux.append(b)
 clases.append(aux)
 
 print("Number of boys: ", clases) 
+print(clases[0][1][1])
 
 
 
