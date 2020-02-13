@@ -41,6 +41,7 @@ while c < n:
     xaxis = []
     yaxis = []
     c = c+1
+    
 plt.title("Clases")
 plt.xlabel("x coordinate")
 plt.ylabel("y coordinate")
