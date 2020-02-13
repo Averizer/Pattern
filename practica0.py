@@ -21,7 +21,7 @@ while c < n:
     print("\nClase a registrar características C"+ str(c))
     ft_class = []
     for x in range(c2):
-        features = list(map(int, input("Ingresa (X"+str(x)+"), coordenadas separadas por Espacio ").split()))
+        features = list(map(int, input("Ingresa (X"+str(x)+"), coordenadas (digitos) separadas por Espacio ").split()))
         ft_class.append(features)
     classes.append(ft_class)
     c = c+1
@@ -35,7 +35,7 @@ while c < n:
     for x in range(c2):
         xaxis.append(classes[c][x][0])
         yaxis.append(classes[c][x][1])
-    plt.plot(xaxis, yaxis, label = ('Clase C'+ str(c)))
+    plt.scatter(xaxis, yaxis, label = ('Clase C'+ str(c)))
     print(xaxis)
     print(yaxis)
     xaxis = []
@@ -43,7 +43,7 @@ while c < n:
     c = c+1
     
 plt.title("Clases")
-plt.xlabel("x coordinate")
-plt.ylabel("y coordinate")
+plt.xlabel("Característica x")
+plt.ylabel("Característica y")
 plt.legend()
 plt.show()
