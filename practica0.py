@@ -11,18 +11,80 @@ def sumar(xvector1,yvector1,xvector2,yvector2):
         n = v1 - v2
         for i in range(n):
             xvector2.append(0)
-
+            yvector2.append(0)
         for i in range(v1):
             vxResultante.append(xvector1[i]+xvector2[i])
             vyResultante.append(yvector1[i]+yvector2[i])
         plt.scatter(vxResultante, vyResultante, label = ('Clase resultante'))
         plt.show()
 
-    
-    #if v2 > v1:
-    
-    #else:
+    if v2 > v1:
+        n = v2 - v1
+        for i in range(n):
+            xvector1.append(0)
+            yvector1.append(0)
+        for i in range(v2):
+            vxResultante.append(xvector1[i]+xvector2[i])
+            vyResultante.append(yvector1[i]+yvector2[i])
+        plt.scatter(vxResultante, vyResultante, label = ('Clase resultante'))
+        plt.show()
+    else:
+        for i in range(v1):
+            vxResultante.append(xvector1[i]+xvector2[i])
+            vyResultante.append(yvector1[i]+yvector2[i])
+        plt.scatter(vxResultante, vyResultante, label = ('Clase resultante'))
+        plt.show()
 
+def restar(xvector1,yvector1,xvector2,yvector2):
+    v1 = len(xvector1)
+    v2 = len(xvector2)
+    vxResultante = []
+    vyResultante = []
+
+    if v1 > v2:
+        n = v1 - v2
+        for i in range(n):
+            xvector2.append(0)
+            yvector2.append(0)
+        for i in range(v1):
+            vxResultante.append(xvector1[i]-xvector2[i])
+            vyResultante.append(yvector1[i]-yvector2[i])
+        plt.scatter(vxResultante, vyResultante, label = ('Clase resultante'))
+        plt.show()
+
+    if v2 > v1:
+        n = v2 - v1
+        for i in range(n):
+            xvector1.append(0)
+            yvector1.append(0)
+        for i in range(v2):
+            vxResultante.append(xvector1[i]-xvector2[i])
+            vyResultante.append(yvector1[i]-yvector2[i])
+        plt.scatter(vxResultante, vyResultante, label = ('Clase resultante'))
+        plt.show()
+    else:
+        for i in range(v1):
+            vxResultante.append(xvector1[i]-xvector2[i])
+            vyResultante.append(yvector1[i]-yvector2[i])
+        plt.scatter(vxResultante, vyResultante, label = ('Clase resultante'))
+        plt.show()
+
+def multiplicar(xvector1,yvector1,xvector2,yvector2):
+    vxResultante = []
+    vyResultante = []
+    v1 = len(xvector1)
+    if(len(xvector2)>2 or len(yvector2)>2):
+        print("Operación no soprtada.")
+    else:
+        for i in range(v1):
+            vxResultante.append((xvector1[i]*xvector2[0])+(yvector1[i]*xvector2[1]))
+            print("Componente calculada "+ str(xvector1[i]) + str(xvector2[0])+str(yvector1[i]) + str(xvector2[1]))
+            vyResultante.append((xvector1[i]*yvector2[0])+(yvector1[i]*yvector2[1]))
+            print("Componente calculada "+ str(vyResultante))
+        print(vxResultante)
+        print(vyResultante)
+        plt.scatter(vxResultante, vyResultante, label = ('Clase resultante'))
+        plt.show()
 
 print("        Hola bienvenid@ a la practica 0")
 print("Para comenzar ingresa el numero de clases que habrá.")
@@ -76,6 +138,8 @@ plt.show()
 op = 0
 print ("x por clase:")
 print(x_per_class)
+
+#------------------------------Menú----------------------------
 while op != 4:
 
     print("\nAhora que tienes los vectores podemos trabajar con ellos"
@@ -88,13 +152,23 @@ while op != 4:
     if op == "1":
         v1 = int(input("Selecciona el primer vector a sumar Ci: "))
         v2 = int(input("Selecciona el segundo vector Ci: "))
+        print(x_per_class[v1])
+        print(y_per_class[v1])
         sumar(x_per_class[v1],y_per_class[v1],x_per_class[v2],y_per_class[v2])
+    if op == "2":
+        v1 = int(input("Selecciona el primer vector a sumar Ci: "))
+        v2 = int(input("Selecciona el segundo vector Ci: "))
+        print(x_per_class[v1])
+        print(y_per_class[v1])
+        restar(x_per_class[v1],y_per_class[v1],x_per_class[v2],y_per_class[v2])
+    if op == "3":
+        v1 = int(input("Selecciona el primer vector a sumar Ci: "))
+        v2 = int(input("Selecciona el segundo vector Ci: "))
+        print(x_per_class[v1])
+        print(y_per_class[v1])
+        multiplicar(x_per_class[v1],y_per_class[v1],x_per_class[v2],y_per_class[v2])
     if op == "4":
         break
-
-
-
-
 
 
 
