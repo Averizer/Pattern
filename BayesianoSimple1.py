@@ -1,7 +1,32 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import math 
 
 xi =[70,75,80,85,90,95,100]
+def formula(ev):
+    global probabilidades_por_clase
+    pre_result = []
+    for i in range(len(ev)):
+        p = round((math.log(probabilidades_por_clase[i]) + math.log(ev[i])), 3)
+        pre_result.append(p)
+    
+    for i in range(len(pre_result)):
+        
+        
+
+def closest(ev):
+    global xi
+    mi = 100000
+    close = 0
+    
+    for i in xi:
+        a = i - ev
+        aux =  abs(a)
+        if(aux <= mi):
+            close = i
+            mi = aux
+    return close
+
 def multiplicar(xvector1,yvector1,xvector2,yvector2):
     vxResultante = []
     vyResultante = []
@@ -20,8 +45,8 @@ def multiplicar(xvector1,yvector1,xvector2,yvector2):
         plt.show()
 
 print("        Hola bienvenid@ al ejercicio 1 Bayesiano simple")
-print("Para comenzar ingresa el numero de clases que habrá.")
-n_clases = int(input("\tNumero = "))
+#print("Para comenzar ingresa el numero de clases que habrá.")
+
 
 n_por_clase = 7
 
@@ -31,92 +56,73 @@ print("\n\nAhora que tenemos las clases procederemos a llenarlas con las caracte
 
 ft_class = []
 classes = []
-total_por_clases = 0
+total_por_clases = []
 total_final = 0
 probabilidades_por_clase = []
 c = 0
+c1 = [0,0,1900,300,45,5,0]
+c2 = [1800,482,10,8,0,0,0]
+c3 = [0,0,0,0,50,400,2000]
 #--------------------------LLenar con los valores -------------------------------
+classes.append(c1)
+classes.append(c2)
+classes.append(c3)
+print("Las clases son:")
+for i in classes:
+    print(str(i))
+print("")
 
-for i in range(n_clases):
-    ft_class =[]
-    total_por_clases = 0
-    for  j in xi:
-        features = int(input("Ingresa el numero de incidencias para " + str(j)+ "gr de la clase C"+ str(i) +": "))
-        total_por_clases = total_por_clases + 3
-        ft_class.append(features)
-    classes.append(ft_class)
-    total_final = total_final + total_por_clases
-    probabilidades_por_clase.append(total_por_clases)
+
+for i in range (3):
+    aux  = 0
+    for j in range(7): 
+        aux += classes[i][j] 
+    probabilidades_por_clase.append(aux)
+    total_por_clases.append(aux)
+    total_final += aux
+    print("El total de la clase es = " + str(aux))
 
 print(total_final)
 print(total_por_clases)
 
+#Calculo de probabilidades por clase
 for i in range(len(probabilidades_por_clase)):
     aux = probabilidades_por_clase[i]
     probabilidades_por_clase[i] = aux/total_final
     
-print(probabilidades_por_clase)
+print("Las probabilidades por clase son: \n "+str(probabilidades_por_clase))
 
+probabilidades = []
 
-"""
-print(classes)
-c=0 
-xaxis = []
-yaxis = []
-x_per_class =[]
-y_per_class =[]
-#---------------------Imprimir clases---------------------------------
-while c < n:
-    c2 = n_por_clase[c]
-    for x in range(c2):
-        xaxis.append(classes[c][x][0])
-        yaxis.append(classes[c][x][1])
-    plt.scatter(xaxis, yaxis, label = ('Clase C'+ str(c)))
-    x_per_class.append(xaxis)
-    y_per_class.append(yaxis)
-    xaxis = []
-    yaxis = []
-    c = c+1
+for i in range (3):
+    aux  = []
+    for j in range(7):
+        aux.append(round(classes[i][j] / total_por_clases[i], 3))
+    probabilidades.append(aux)
     
-plt.title("Clases")
-plt.xlabel("Característica x")
-plt.ylabel("Característica y")
-plt.legend()
-plt.show()
-op = 0
-print ("x por clase:")
-print(x_per_class)
+for i in probabilidades:
+    print(str(i))
 
-#------------------------------Menú----------------------------
-while op != 4:
+print("Ahora que tenemos completado el entrenamiento del clasificador" +
+      "\n probaremos su funcionamiento.")
+
+op = 0
+
+while op != 2:
 
     print("\nAhora que tienes los vectores podemos trabajar con ellos"
          +"\n Digita la opción que desees realizar.")
-    print("1.- Sumar")
-    print("2.- Restar")
-    print("3.- Multiplicar")
-    print("4.- Salir")
+    print("1.- Ingresar una muestra para evaluar")
+    print("2.- Salir")
+
     op = input("Ingresa la opción: ")
     if op == "1":
-        v1 = int(input("Selecciona el primer vector a sumar Ci: "))
-        v2 = int(input("Selecciona el segundo vector Ci: "))
-        print(x_per_class[v1])
-        print(y_per_class[v1])
-        sumar(x_per_class[v1],y_per_class[v1],x_per_class[v2],y_per_class[v2])
+        x = int(input("Ingresa una muestra: "))
+        evaluando = closest(x)
+        print("El numero se acerca más a: "+ evaluando)
+        
     if op == "2":
-        v1 = int(input("Selecciona el primer vector a sumar Ci: "))
-        v2 = int(input("Selecciona el segundo vector Ci: "))
-        print(x_per_class[v1])
-        print(y_per_class[v1])
-        restar(x_per_class[v1],y_per_class[v1],x_per_class[v2],y_per_class[v2])
-    if op == "3":
-        v1 = int(input("Selecciona el primer vector a sumar Ci: "))
-        v2 = int(input("Selecciona el segundo vector Ci: "))
-        print(x_per_class[v1])
-        print(y_per_class[v1])
-        multiplicar(x_per_class[v1],y_per_class[v1],x_per_class[v2],y_per_class[v2])
-    if op == "4":
         break
-"""
+
 
 
