@@ -6,14 +6,15 @@ xi =[70,75,80,85,90,95,100]
 def formula(ev):
     global probabilidades_por_clase
     pre_result = []
-    for i in range(len(ev)):
+    for i in range(len(ev)):    
         p = round((math.log(probabilidades_por_clase[i]) + math.log(ev[i])), 3)
         pre_result.append(p)
-    
-    for i in range(len(pre_result)):
+    arr_res = []
+    aux=max(pre_result)
+    arr_res.append(str(aux))
+    arr_res.append(str(pre_result.index(max(pre_result))))
+    return arr_res
         
-        
-
 def closest(ev):
     global xi
     mi = 100000
@@ -26,23 +27,6 @@ def closest(ev):
             close = i
             mi = aux
     return close
-
-def multiplicar(xvector1,yvector1,xvector2,yvector2):
-    vxResultante = []
-    vyResultante = []
-    v1 = len(xvector1)
-    if(len(xvector2)>2 or len(yvector2)>2):
-        print("Operación no soprtada.")
-    else:
-        for i in range(v1):
-            vxResultante.append((xvector1[i]*xvector2[0])+(yvector1[i]*xvector2[1]))
-            print("Componente calculada "+ str(xvector1[i]) + str(xvector2[0])+str(yvector1[i]) + str(xvector2[1]))
-            vyResultante.append((xvector1[i]*yvector2[0])+(yvector1[i]*yvector2[1]))
-            print("Componente calculada "+ str(vyResultante))
-        print(vxResultante)
-        print(vyResultante)
-        plt.scatter(vxResultante, vyResultante, label = ('Clase resultante'))
-        plt.show()
 
 print("        Hola bienvenid@ al ejercicio 1 Bayesiano simple")
 #print("Para comenzar ingresa el numero de clases que habrá.")
@@ -67,6 +51,7 @@ c3 = [0,0,0,0,50,400,2000]
 classes.append(c1)
 classes.append(c2)
 classes.append(c3)
+print(xi)
 print("Las clases son:")
 for i in classes:
     print(str(i))
@@ -119,10 +104,16 @@ while op != 2:
     if op == "1":
         x = int(input("Ingresa una muestra: "))
         evaluando = closest(x)
-        print("El numero se acerca más a: "+ evaluando)
+        print("El numero se acerca más a: "+ str(evaluando))
+        comparador = xi.index(evaluando)        
+        a_evaluar = []
+        for i in range(len(probabilidades_por_clase)):
+            if(probabilidades[i][comparador] != 0):
+                a_evaluar.append(probabilidades[i][comparador])
         
+        resultado = formula(a_evaluar)
+        #
+        # a = resultado[0]
+        print("El resultado es: " +resultado[0]+" de la clase C" + resultado[1])
     if op == "2":
         break
-
-
-
