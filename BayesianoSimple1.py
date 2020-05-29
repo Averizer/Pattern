@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math 
 
-xi =[70,75,80,85,90,95,100]
+#Aplicacion de la formula logaritmica
 def formula(ev):
     global probabilidades_por_clase
     pre_result = []
@@ -14,7 +14,7 @@ def formula(ev):
     arr_res.append(str(aux))
     arr_res.append(str(pre_result.index(max(pre_result))))
     return arr_res
-        
+#Verificar que etiqueta es la mas cercana al numero a evaluar     
 def closest(ev):
     global xi
     mi = 100000
@@ -28,36 +28,37 @@ def closest(ev):
             mi = aux
     return close
 
-print("        Hola bienvenid@ al ejercicio 1 Bayesiano simple")
-#print("Para comenzar ingresa el numero de clases que habrá.")
 
-
+xi =[70,75,80,85,90,95,100]
 n_por_clase = 7
+c1 = [0,0,1900,300,45,5,0]
+c2 = [1800,482,10,8,0,0,0]
+c3 = [0,0,0,0,50,400,2000]
 
-
+print("        Hola bienvenid@ al ejercicio 1 Bayesiano simple")
 print("Cada clase tiene el siguiete numero de características: " + str(n_por_clase))
 print("\n\nAhora que tenemos las clases procederemos a llenarlas con las características.")
 
-ft_class = []
+
 classes = []
 total_por_clases = []
 total_final = 0
 probabilidades_por_clase = []
 c = 0
-c1 = [0,0,1900,300,45,5,0]
-c2 = [1800,482,10,8,0,0,0]
-c3 = [0,0,0,0,50,400,2000]
-#--------------------------LLenar con los valores -------------------------------
+
+#Llenado de clases
 classes.append(c1)
 classes.append(c2)
 classes.append(c3)
 print(xi)
 print("Las clases son:")
+#Mostrar las clases
 for i in classes:
     print(str(i))
 print("")
 
-
+#Hace el recuento de elementos por clase
+#Y el recuento total de elementros totales
 for i in range (3):
     aux  = 0
     for j in range(7): 
@@ -78,7 +79,7 @@ for i in range(len(probabilidades_por_clase)):
 print("Las probabilidades por clase son: \n "+str(probabilidades_por_clase))
 
 probabilidades = []
-
+#Calculo de probabilidades independientes
 for i in range (3):
     aux  = []
     for j in range(7):

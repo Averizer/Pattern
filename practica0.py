@@ -141,7 +141,6 @@ print(x_per_class)
 
 #------------------------------Menú----------------------------
 while op != 4:
-
     print("\nAhora que tienes los vectores podemos trabajar con ellos"
          +"\n Digita la opción que desees realizar.")
     print("1.- Sumar")
