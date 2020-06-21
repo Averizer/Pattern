@@ -13,6 +13,7 @@ df = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/iris
 # Plot 100 samples of the data
 y = df.iloc[0:100, 4].values
 y = np.where(y == 'Iris-setosa', -1, 1)
+
 X = df.iloc[0:100, [0, 2]].values
 
 plt.scatter(X[:50, 0], X[:50, 1], color = 'red', marker = 'o', label = 'setosa')
@@ -41,29 +42,9 @@ plt.show()
 
 # Plot the decision boundary
 prd.plot_decision_regions(X_std, y, classifier = model1)
-plt.title('Adaline - Gradient Descent')
-plt.xlabel('sepal length [standardized')
+plt.title('Adaline')
+plt.xlabel('sepal length [standardized]')
 plt.ylabel('petal length [standardized]')
 plt.legend(loc = 'upper left')
 plt.show()
 
-# Create the AdalineSGD model
-#model2 = AdalineSGD(n_iter = 15, eta = 0.01, random_state = 1)
-"""
-# Train the model
-model2.fit(X_std, y)
-
-# Plot the training errors of both of the models
-plt.plot(range(1, len(model2.cost_) + 1), model2.cost_, marker = 'x', color = 'blue')
-plt.xlabel('Epochs')
-plt.ylabel('Sum-squared-error')
-plt.show()
-
-
-# Plot the decision boundary
-prd.plot_decision_regions(X_std, y, classifier = model2)
-plt.title('Adaline - Stochastic Gradient Descent')
-plt.xlabel('sepal length [standardized')
-plt.ylabel('petal length [standardized]')
-plt.legend(loc = 'upper left')
-plt.show()"""
